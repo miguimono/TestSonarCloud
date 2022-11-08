@@ -21,7 +21,7 @@ export class ActivityComponent implements OnInit, OnDestroy {
   editorsText: string;
 
   subscription: Subject<Activity>;
-
+  public TestVar: string;
   @Input()
   public caseId: string;
 
@@ -31,6 +31,7 @@ export class ActivityComponent implements OnInit, OnDestroy {
   constructor(private activityPollingService: ActivityPollingService) {}
 
   ngOnInit() {
+    this.TestVar = "Esto es una variable de prueba"
     this.activity = new Activity();
     this.activity.caseId = this.caseId;
     this.activity.editors = [];
