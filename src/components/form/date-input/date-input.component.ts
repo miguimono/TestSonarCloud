@@ -86,8 +86,38 @@ export class DateInputComponent implements ControlValueAccessor, Validator, OnIn
       }
     }
   }
+    public writeValue2(obj: string): void { // 2018-04-09T08:02:27.542
+    if (obj) {
+      this.rawValue = this.removeMilliseconds(obj);
+      // needs to handle also partial dates, e.g. -05-2016 (missing day)
+      const [datePart, timePart] = this.rawValue.split('T');
+      const dateValues = datePart.split('-');
+      this.year = this.displayYear = dateValues[0] || '';
+      this.month = this.displayMonth = dateValues[1] || '';
+      this.day = this.displayDay = dateValues[2] || '';
+      if (timePart) {
+        const timeParts = timePart.split(':');
+        this.hour = this.displayHour = timeParts[0] || '';
+        this.minute = this.displayMinute = timeParts[1] || '';
+        this.second = this.displaySecond = timeParts[2] || '';
+      }
+    }
+  }
 
   public validate(control: AbstractControl): ValidationErrors {
+    if (this.mandatory && !this.viewValue()) {
+      return {
+        required: 'This field is required'
+      };
+    }
+    if (control.value && !this.isDateFormat(this.getValueForValidation(control))) {
+      return {
+        pattern: 'Date is not valid'
+      };
+    }
+    return undefined;
+  }
+    public validate2(control: AbstractControl): ValidationErrors {
     if (this.mandatory && !this.viewValue()) {
       return {
         required: 'This field is required'
@@ -216,6 +246,26 @@ export class DateInputComponent implements ControlValueAccessor, Validator, OnIn
   }
 
   private viewValue(): string {
+    if (this.day || this.month || this.year || this.hour || this.minute || this.second) {
+      const date = [
+        this.year ? this.year : '',
+        this.month ? this.pad(this.month) : '',
+        this.day ? this.pad(this.day) : ''
+      ].join('-');
+      if (this.isDateTime) {
+        const time = [
+          this.hour ? this.pad(this.hour) : '',
+          this.minute ? this.pad(this.minute) : '',
+          this.second ? this.pad(this.second) : ''
+        ].join(':');
+        return date + 'T' + time + '.000';
+      } else {
+        return date;
+      }
+    }
+    return null;
+  }
+    private viewValue2(): string {
     if (this.day || this.month || this.year || this.hour || this.minute || this.second) {
       const date = [
         this.year ? this.year : '',
