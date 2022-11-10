@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivityPollingService } from '../../services/activity/activity.polling.service';
-import { Activity, ActivityInfo } from '../../domain/activity/activity.model';
-import { DisplayMode } from '../../domain/activity/activity.model';
+import { Activity, ActivityInfo, DisplayMode } from '../../domain/activity/activity.model';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -42,7 +41,6 @@ export class ActivityComponent implements OnInit, OnDestroy {
     this.editorsText = '';
     this.subscription = this.activityPollingService.subscribeToActivity(this.caseId, newActivity => this.onActivityChange(newActivity));
   }
-
   onActivityChange(newActivity: Activity) {
     this.activity = newActivity;
     this.viewersText = this.generateDescription(this.VIEWERS_PREFIX,
@@ -54,23 +52,18 @@ export class ActivityComponent implements OnInit, OnDestroy {
       this.activity.editors,
       this.activity.unknownEditors);
   }
-
   isActivityEnabled() {
     return this.activityPollingService.isEnabled;
   }
-
   isActiveCase() {
     return this.activity.editors.length || this.activity.viewers.length || this.activity.unknownEditors || this.activity.unknownViewers;
   }
-
   viewersPresent(): boolean {
     return (this.activity.viewers.length > 0 || this.activity.unknownViewers > 0)
   }
-
   editorsPresent(): boolean {
     return (this.activity.editors.length > 0 || this.activity.unknownEditors > 0)
   }
-
   public ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.complete();
@@ -97,288 +90,8 @@ export class ActivityComponent implements OnInit, OnDestroy {
     }
     return resultText;
   }
-    generateDescription1(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
 
-  generateDescription2(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-
-  generateDescription3(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-
-  generateDescription4(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-
-  generateDescription5(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-
-  generateDescription6(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-
-  generateDescription7(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-
-  generateDescription8(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-
-  generateDescription9(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-
-  generateDescription10(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-    generateDescription11(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-    generateDescription12(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-    generateDescription13(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-    generateDescription14(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-    generateDescription15(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
-    let resultText = prefix;
-    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
-    if (unknownCount > 0) {
-      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
-      resultText += ( unknownCount > 1 ? 's' : '');
-    } else {
-      resultText = this.replaceLastCommaWithAnd(resultText);
-    }
-    if (suffix.length > 0) {
-      if (namesArray.length + unknownCount > 1) {
-        resultText += ' are ' + suffix;
-      } else {
-        resultText += ' is ' + suffix;
-      }
-    }
-    return resultText;
-  }
-
-
-  private replaceLastCommaWithAnd(str: String) {
+  private replaceLastCommaWithAnd(str: string) {
     return str.replace(/(.*)\,(.*?)$/, '$1 and$2');
   }
 }
