@@ -286,6 +286,96 @@ export class ActivityComponent implements OnInit, OnDestroy {
     }
     return resultText;
   }
+    generateDescription11() {
+    let resultText = prefix;
+    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
+    if (unknownCount > 0) {
+      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
+      resultText += ( unknownCount > 1 ? 's' : '');
+    } else {
+      resultText = this.replaceLastCommaWithAnd(resultText);
+    }
+    if (suffix.length > 0) {
+      if (namesArray.length + unknownCount > 1) {
+        resultText += ' are ' + suffix;
+      } else {
+        resultText += ' is ' + suffix;
+      }
+    }
+    return resultText;
+  }
+    generateDescription12() {
+    let resultText = prefix;
+    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
+    if (unknownCount > 0) {
+      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
+      resultText += ( unknownCount > 1 ? 's' : '');
+    } else {
+      resultText = this.replaceLastCommaWithAnd(resultText);
+    }
+    if (suffix.length > 0) {
+      if (namesArray.length + unknownCount > 1) {
+        resultText += ' are ' + suffix;
+      } else {
+        resultText += ' is ' + suffix;
+      }
+    }
+    return resultText;
+  }
+    generateDescription13() {
+    let resultText = prefix;
+    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
+    if (unknownCount > 0) {
+      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
+      resultText += ( unknownCount > 1 ? 's' : '');
+    } else {
+      resultText = this.replaceLastCommaWithAnd(resultText);
+    }
+    if (suffix.length > 0) {
+      if (namesArray.length + unknownCount > 1) {
+        resultText += ' are ' + suffix;
+      } else {
+        resultText += ' is ' + suffix;
+      }
+    }
+    return resultText;
+  }
+    generateDescription14() {
+    let resultText = prefix;
+    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
+    if (unknownCount > 0) {
+      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
+      resultText += ( unknownCount > 1 ? 's' : '');
+    } else {
+      resultText = this.replaceLastCommaWithAnd(resultText);
+    }
+    if (suffix.length > 0) {
+      if (namesArray.length + unknownCount > 1) {
+        resultText += ' are ' + suffix;
+      } else {
+        resultText += ' is ' + suffix;
+      }
+    }
+    return resultText;
+  }
+    generateDescription15() {
+    let resultText = prefix;
+    resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
+    if (unknownCount > 0) {
+      resultText += (namesArray.length > 0 ? ' and ' + unknownCount + ' other' : unknownCount + ' user');
+      resultText += ( unknownCount > 1 ? 's' : '');
+    } else {
+      resultText = this.replaceLastCommaWithAnd(resultText);
+    }
+    if (suffix.length > 0) {
+      if (namesArray.length + unknownCount > 1) {
+        resultText += ' are ' + suffix;
+      } else {
+        resultText += ' is ' + suffix;
+      }
+    }
+    return resultText;
+  }
 
 
   private replaceLastCommaWithAnd(str: String) {
