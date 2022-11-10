@@ -268,7 +268,7 @@ export class ActivityComponent implements OnInit, OnDestroy {
     return resultText;
   }
 
-  generateDescription10(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
+  generateDescription10() {
     let resultText = prefix;
     resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
     if (unknownCount > 0) {
