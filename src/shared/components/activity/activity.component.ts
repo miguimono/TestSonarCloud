@@ -41,7 +41,6 @@ export class ActivityComponent implements OnInit, OnDestroy {
     this.editorsText = '';
     this.subscription = this.activityPollingService.subscribeToActivity(this.caseId, newActivity => this.onActivityChange(newActivity));
   }
-
   onActivityChange(newActivity: Activity) {
     this.activity = newActivity;
     this.viewersText = this.generateDescription(this.VIEWERS_PREFIX,
@@ -53,23 +52,18 @@ export class ActivityComponent implements OnInit, OnDestroy {
       this.activity.editors,
       this.activity.unknownEditors);
   }
-
   isActivityEnabled() {
     return this.activityPollingService.isEnabled;
   }
-
   isActiveCase() {
     return this.activity.editors.length || this.activity.viewers.length || this.activity.unknownEditors || this.activity.unknownViewers;
   }
-
   viewersPresent(): boolean {
     return (this.activity.viewers.length > 0 || this.activity.unknownViewers > 0)
   }
-
   editorsPresent(): boolean {
     return (this.activity.editors.length > 0 || this.activity.unknownEditors > 0)
   }
-
   public ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.complete();
