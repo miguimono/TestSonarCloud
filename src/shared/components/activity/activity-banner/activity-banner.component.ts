@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'ccd-activity-banner',
   templateUrl: './activity-banner.component.html',
   styleUrls: ['./activity-banner.component.css']
 })
-export class ActivityBannerComponent implements OnInit {
+export class ActivityBannerComponent {
   @Input()
   public bannerType: string;
 
