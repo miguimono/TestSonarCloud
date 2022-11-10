@@ -40,7 +40,7 @@
       <h2 class="heading-h2">Check your answers</h2>
       <span class="text-16">Check the information below carefully.</span>
 
-      <table class="form-table">
+      <table class="form-table" aria-describedby="form_table">
         <tbody>
         <ng-container *ngFor="let page of this.wizard.pages">
           <ng-container *ngIf="isShown(page)">
@@ -71,12 +71,12 @@
     </ng-container>
     <ng-container *ngIf="readOnlySummaryFieldsToDisplayExists()">
 
-      <table class="summary-fields">
+      <table class="summary-fields" aria-describedby="summary_fields">
         <tbody>
           <ng-container *ngFor="let field of this.showSummaryFields">
               <ng-container [ngSwitch]="!(field | ccdIsCompound)">
                 <tr *ngSwitchCase="true" ccdLabelSubstitutor [caseField]="field" [formGroup]="editForm.controls['data']" [contextFields]="contextFields">
-                  <th>{{field.label}}</th>
+                  <th id="label">{{field.label}}</th>
                   <td class="form-cell">
                     <ccd-field-read [formGroup]="editForm.controls['data']" [caseField]="summaryCaseField(field)"></ccd-field-read>
                   </td>
@@ -93,6 +93,7 @@
     </ng-container>
     <ng-container *ngIf="showEventNotes()">
       <fieldset id="fieldset-event" formGroupName="event" *ngIf="profile && !isSolicitor()">
+        <legend>Profile</legend>
         <div class="form-group">
           <label for="field-trigger-summary" class="form-label">
             Event summary (optional)
