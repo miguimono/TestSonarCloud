@@ -5,15 +5,11 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './activity-icon.component.html',
   styleUrls: ['./activity-icon.component.css']
 })
-export class ActivityIconComponent implements OnInit {
+export class ActivityIconComponent {
   @Input()
   public description: string;
 
   @Input()
   public imageLink: string;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
 }
