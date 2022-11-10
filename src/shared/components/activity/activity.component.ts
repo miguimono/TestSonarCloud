@@ -268,7 +268,7 @@ export class ActivityComponent implements OnInit, OnDestroy {
     return resultText;
   }
 
-  generateDescription10() {
+  generateDescription10(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
     let resultText = prefix;
     resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
     if (unknownCount > 0) {
@@ -286,7 +286,7 @@ export class ActivityComponent implements OnInit, OnDestroy {
     }
     return resultText;
   }
-    generateDescription11() {
+    generateDescription11(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
     let resultText = prefix;
     resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
     if (unknownCount > 0) {
@@ -304,7 +304,7 @@ export class ActivityComponent implements OnInit, OnDestroy {
     }
     return resultText;
   }
-    generateDescription12() {
+    generateDescription12(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
     let resultText = prefix;
     resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
     if (unknownCount > 0) {
@@ -322,7 +322,7 @@ export class ActivityComponent implements OnInit, OnDestroy {
     }
     return resultText;
   }
-    generateDescription13() {
+    generateDescription13(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
     let resultText = prefix;
     resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
     if (unknownCount > 0) {
@@ -340,7 +340,7 @@ export class ActivityComponent implements OnInit, OnDestroy {
     }
     return resultText;
   }
-    generateDescription14() {
+    generateDescription14(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
     let resultText = prefix;
     resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
     if (unknownCount > 0) {
@@ -358,7 +358,7 @@ export class ActivityComponent implements OnInit, OnDestroy {
     }
     return resultText;
   }
-    generateDescription15() {
+    generateDescription15(prefix: string, suffix: string, namesArray: Array<ActivityInfo>, unknownCount) {
     let resultText = prefix;
     resultText += namesArray.map(activityInfo => activityInfo.forename + ' ' + activityInfo.surname).join(', ');
     if (unknownCount > 0) {
