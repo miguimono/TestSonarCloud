@@ -1,6 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
-import { EventEmitter } from '@angular/core';
-
+import { Component, Input, Output,EventEmitter } from '@angular/core';
 @Component({
     selector: 'cut-header-bar',
     templateUrl: './header-bar.html',

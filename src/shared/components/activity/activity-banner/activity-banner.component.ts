@@ -14,9 +14,4 @@ export class ActivityBannerComponent implements OnInit {
 
   @Input()
   public imageLink: string;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 }
